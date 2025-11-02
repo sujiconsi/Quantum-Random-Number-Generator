@@ -21,7 +21,7 @@ Our goal:
 ## How It Works
 ### 1. Generating Quantum Random Numbers
 We build an n-qubit circuit and apply Hadamard (H) gates to each qubit, creating an equal superposition.
-|0⟩ --H--> |+⟩ = (|0⟩ + |1⟩)/√2
+<img src="https://latex.codecogs.com/svg.image?%7C0%5Crangle%20%5Cstackrel%7BH%7D%7B%5Clongrightarrow%7D%20%7C%2B%5Crangle%20=%20%5Cfrac%7B%7C0%5Crangle%20+%20%7C1%5Crangle%7D%7B%5Csqrt%7B2%7D%7D" alt="Hadamard transformation" />
 
 
 For n qubits, that gives 2ⁿ possible outcomes — all ideally equally likely.
