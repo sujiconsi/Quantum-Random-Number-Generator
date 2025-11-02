@@ -28,47 +28,11 @@ Our goal:
 2. Prove that the results are genuinely uniform
 3. Apply it to generate high-entropy passwords
 4. Explore how noise mitigation can make it even fairer
-χ² = Σ((Observed - Expected)² / Expected) (χ² formula from NIST, 2010).
+5. Implement and tested as **Random Password Generator**.
 
 
-## B. Respository Structure/ Documents
 
-```text
-qrng-plus/
-├─ src/
-│  ├─ qrng.py              # Core Hⁿ circuit + bit cache + uniform ints
-│  ├─ quantum_passwords.py # Convert bits → printable Base94 passwords
-│  ├─ metrics.py           # χ², KL, bit-frequency, histograms
-│  ├─ mitigation.py        # Readout calibration & correction (optional)
-│  ├─ lgi_cert.py          # LGI + NSIT certification protocol
-│  └─ viz.py               # Matplotlib plotting helpers
-├─ notebooks/
-│  └─ QRNGpp_demo.ipynb    # Main step-by-step demo (A–H)
-└─ data/                   # Auto-created cache for results & plots
-```
-
-
-## B1: Key Dependencies
-- **Qiskit** – circuit construction & simulation (`qiskit`, `qiskit-runtime`, if unable to use Qiskit Runtime: `qiskit-aer`)
-- **NumPy** – numerical arrays & probability vectors
-- **SciPy** – chi-square test statistics
-- **Matplotlib** – plots & figures
-- **JSON / pathlib** – structured caching of counts & metrics
-
-### B2: Workflow (Notebook Sections A–H)
-| Section | Description |
-|----------|-------------|
-| **A** | Setup environment & create `data/` folder |
-| **B** | Generate raw bitstrings using Hⁿ + measurement |
-| **C** | Visualize counts and bit-frequency |
-| **D** | Statistical tests (χ², KL divergence) |
-| **E** | Readout-error mitigation and re-evaluation |
-| **F** | LGI + NSIT certification (temporal quantum tests) |
-| **G** | Password generator & entropy analysis |
-| **H** | Save metadata for reproducibility |
-
-
-# C. How It Works
+# B. How It Works
 ## 1. Generating Quantum Random Numbers
 We build an n-qubit circuit and apply Hadamard (H) gates to each qubit, creating an equal superposition.
 For n qubits, that gives 2ⁿ possible outcomes — all ideally equally likely.
@@ -135,10 +99,11 @@ This concept expands on the open project “Quantum Password Generator using Qis
 
 
 
-# D. Data and Results
+# C. Data and Results
 
 ### 4.1 Bit Frequency
 <img width="671" height="494" alt="image" src="https://github.com/user-attachments/assets/7070c6eb-58ee-4ffa-b5c2-b5ccc334d43d" />
+
 Balanced ~50/50 distribution --> confirms superposition fairness.
 
 ### 4.2 4-Qubit Counts Histogram
@@ -172,7 +137,7 @@ Entropy grows linearly (≈6.55 bits per character for Base94), validating the f
 
 
 
-# E. Analysis and Discussion
+# D. Analysis and Discussion
 
 ### A. Quantum Randomness Quality
 - **χ² ≈ small, KL ≈ 0.0** → indicates no statistical bias.
@@ -201,7 +166,7 @@ Together, they provide qualitative evidence that the randomness originates from 
 
 
 
-# F. Conclusion
+# E. Conclusion
 
 Full-stack quantum random number pipeline:
 
@@ -225,3 +190,41 @@ The results confirm that even a small Hⁿ circuit produces **statistically fair
 4. P. D. Nation, H. Kang, N. Sundaresan, and J. M. Gambetta, “Scalable Mitigation of Measurement Errors on Quantum Computers,” PRX Quantum 2, 040326 (2021).
 5. S. Ferracin, A. Hashim, J.-L. Ville, R. Naik, A. Carignan-Dugas, H. Qassim, A. Morvan, D. I. Santiago, I. Siddiqi, and J. J. Wallman, “Efficiently Improving the Performance of Noisy Quantum Computers,” Quantum 8, 1410 (2024).
 6. National Institute of Standards and Technology (NIST), SP 800-22 Rev 1a: A Statistical Test Suite for Random and Pseudorandom Number Generators for Cryptographic Applications (2010).
+
+
+## F. Respository Structure/ Documents
+
+```text
+qrng-plus/
+├─ src/
+│  ├─ qrng.py              # Core Hⁿ circuit + bit cache + uniform ints
+│  ├─ quantum_passwords.py # Convert bits → printable Base94 passwords
+│  ├─ metrics.py           # χ², KL, bit-frequency, histograms
+│  ├─ mitigation.py        # Readout calibration & correction (optional)
+│  ├─ lgi_cert.py          # LGI + NSIT certification protocol
+│  └─ viz.py               # Matplotlib plotting helpers
+├─ notebooks/
+│  └─ QRNGpp_demo.ipynb    # Main step-by-step demo (A–H)
+└─ data/                   # Auto-created cache for results & plots
+```
+
+
+### F1: Key Dependencies
+- **Qiskit** – circuit construction & simulation (`qiskit`, `qiskit-runtime`, if unable to use Qiskit Runtime: `qiskit-aer`)
+- **NumPy** – numerical arrays & probability vectors
+- **SciPy** – chi-square test statistics
+- **Matplotlib** – plots & figures
+- **JSON / pathlib** – structured caching of counts & metrics
+
+### F2: Workflow (Notebook Sections A–H)
+| Section | Description |
+|----------|-------------|
+| **A** | Setup environment & create `data/` folder |
+| **B** | Generate raw bitstrings using Hⁿ + measurement |
+| **C** | Visualize counts and bit-frequency |
+| **D** | Statistical tests (χ², KL divergence) |
+| **E** | Readout-error mitigation and re-evaluation |
+| **F** | LGI + NSIT certification (temporal quantum tests) |
+| **G** | Password generator & entropy analysis |
+| **H** | Save metadata for reproducibility |
+
