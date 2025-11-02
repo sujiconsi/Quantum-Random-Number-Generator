@@ -16,6 +16,7 @@ Our goal:
 2. Prove that the results are genuinely uniform
 3. Apply it to generate high-entropy passwords
 4. Explore how noise mitigation can make it even fairer
+χ² = Σ((Observed - Expected)² / Expected)
 
 
 ## How It Works
