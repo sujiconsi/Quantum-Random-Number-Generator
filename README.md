@@ -1,2 +1,2 @@
-# Quantum-Random-Number-Generator
+# Quantum Random Number Generator
 QRNG with Error Mitigation Technique
