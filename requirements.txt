@@ -1,0 +1,17 @@
+# Core quantum stack
+qiskit==1.2.4
+qiskit-aer==0.14.2
+
+# Numerical + statistics
+numpy>=1.26.0
+scipy>=1.12.0
+
+# Visualization
+matplotlib>=3.8.0
+
+# Notebook / environment
+jupyter>=1.0.0
+notebook>=7.0.6
+
+# Optional utilities
+pandas>=2.2.0     # if you ever export tabular results
