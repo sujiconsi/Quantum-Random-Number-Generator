@@ -38,6 +38,7 @@ By running many “shots,” we see how evenly each outcome appears.
 Ideally, all outcomes should have the same frequency, forming a flat histogram.
 
 We attempt to test the randomness of our results through:
+
 ### * Chi-Square (X²) Test
 
 Compares the measured counts of each outcome with what we would expect in a perfectly uniform distribution.
@@ -47,12 +48,14 @@ Compares the measured counts of each outcome with what we would expect in a perf
 If the X² value is small (close to 0), the distribution is close to uniform.
 This method follows the NIST randomness test suite used. (inspired by step 4 of https://github.com/dorahacksglobal/quantum-randomness-generator/tree/QC-Prediction-Model)
 
+
 ### * Bit-Frequency Analysis
 
 We count how often 0 and 1 appear across all measurements.
 True randomness should give roughly 50% zeros and 50% ones — any large imbalance signals bias.
 
-### 3. Mitigating Noise 
+
+## 3. Mitigating Noise 
 Real quantum hardware isn’t perfect and certain qubits might slightly favor 0 or 1. (due to noise)
 To correct for that, we use readout-error mitigation:
 
@@ -62,11 +65,12 @@ To correct for that, we use readout-error mitigation:
 <img src="https://latex.codecogs.com/svg.image?\bg_white%20p_%7Bideal%7D%20=%20A%5E%7B-1%7D%20%5Ctimes%20p_%7Bnoisy%7D" alt="Ideal vs noisy probability vector" />
 
 
+
 Simplified from: https://arxiv.org/html/2502.02973v1#bib (which were originally inspired from Nation et al. [2021] and Ferracin et al. [2024])
 
 This step, also based on IBM’s M3 (Matrix Measurement Mitigation) library, flattens the histogram and improves fairness.
 
-### 4. Password Mode (Application of QRNG)
+## 4. Password Mode (Application of QRNG)
 We map our quantum-generated bits to printable characters (letters, digits, and symbols) to create secure, random passwords.
 
 Example:
@@ -76,7 +80,9 @@ Each password’s entropy is estimated as:
 
 <img src="https://latex.codecogs.com/svg.image?\bg_white%20Entropy(bits)%20=%20Length%20%5Ctimes%20%5Clog_2(Alphabet%5C%20Size)" alt="Entropy formula" />
 
+
 So, a 16-character password from 94 symbols ≈ 105 bits of entropy — strong enough to resist brute-force even on quantum-era machines.
+
 
 This concept expands on the open project “Quantum Password Generator using Qiskit” (https://github.com/SagarPatange/Quantum-Random-Number-Password-Generator), adding statistical proof and fairness correction.
 
