@@ -23,7 +23,6 @@ Our goal:
 
 ## B. Respository Structure/ Documents
 qrng-plus/
-
 qrng-plus/
 ├─ src/
 │ ├─ qrng.py # Core Hⁿ circuit + bit cache + uniform ints
@@ -37,9 +36,8 @@ qrng-plus/
 └─ data/ # Auto-created cache for results & plots
 
 
-
 ## B1: Key Dependencies
-- **Qiskit** – circuit construction & simulation (`qiskit`, `qiskit-aer`)
+- **Qiskit** – circuit construction & simulation (`qiskit`, `qiskit-runtime` or `qiskit-aer`)
 - **NumPy** – numerical arrays & probability vectors
 - **SciPy** – chi-square test statistics
 - **Matplotlib** – plots & figures
@@ -193,7 +191,7 @@ Together, they provide qualitative evidence that the randomness originates from 
 
 
 
-# F, Conclusion
+# F. Conclusion
 
 Full-stack quantum random number pipeline:
 
