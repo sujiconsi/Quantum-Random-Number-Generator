@@ -1,6 +1,7 @@
 # Quantum Random Number Generator (implemented for Random Password Generator)
 
 Full name: Wei Chan Leong 
+
 email ID: lwc.wei.chan@gmail.com
 
 
