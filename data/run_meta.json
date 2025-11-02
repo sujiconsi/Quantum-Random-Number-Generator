@@ -1,0 +1,21 @@
+{
+  "notebook": "/Users/wei/Desktop/QCode/QRNG",
+  "root_dir": "/Users/wei/Desktop/QCode",
+  "data_dir": "/Users/wei/Desktop/QCode/data",
+  "src_dir": "/Users/wei/Desktop/QCode/src",
+  "params": {
+    "n_qubits": 4,
+    "shots": 10000,
+    "seed": 42,
+    "theta_cert": 0.4,
+    "shots_cert": 8000,
+    "password_len_demo": 16
+  },
+  "versions": {
+    "python": "3.13.7 (v3.13.7:bcee1c32211, Aug 14 2025, 19:10:51) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "numpy": "2.3.4",
+    "qiskit": "2.2.1",
+    "matplotlib": "3.10.7"
+  },
+  "backend": "qasm_simulator"
+}
