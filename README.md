@@ -92,7 +92,7 @@ Each password’s entropy is estimated as:
 <img src="https://latex.codecogs.com/svg.image?\bg_white%20Entropy(bits)%20=%20Length%20%5Ctimes%20%5Clog_2(Alphabet%5C%20Size)" alt="Entropy formula" />
 
 
-So, a 16-character password from 94 symbols ≈ 105 bits of entropy — strong enough to resist brute-force even on quantum-era machines.
+For example, a 16-character password from 94 symbols ≈ 105 bits of entropy — strong enough to resist brute-force even on quantum-era machines.
 
 
 This concept expands on the open project “Quantum Password Generator using Qiskit” (https://github.com/SagarPatange/Quantum-Random-Number-Password-Generator) by adding statistical proof and fairness correction.
@@ -160,9 +160,9 @@ Together, they provide qualitative evidence that the randomness originates from 
 - 16-character Base94 passwords reach **~105 bits entropy** **(secure against brute-force)**.
 
 ### E. Implementation Challenges
-- **Endianness**: Qiskit’s bitstring ordering had to be handled carefully for LGI/NSIT.
-- **Noise simulation**: Real hardware introduces drift — mitigation helps but scales exponentially with qubit count.
-- **Reproducibility**: Randomness means every run differs; saving metadata (seed, backend, versions) ensures traceability.
+- Qiskit’s bitstring ordering had to be handled carefully for LGI/NSIT.
+- Real hardware introduces drift, mitigation helps but scales exponentially with qubit count.
+- Randomness means every run differs; saving metadata (seed, backend, versions) ensures traceability.
 
 
 
