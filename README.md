@@ -22,18 +22,30 @@ Our goal:
 ## How It Works
 ### 1. Generating Quantum Random Numbers
 We build an n-qubit circuit and apply Hadamard (H) gates to each qubit, creating an equal superposition.
-<img src="https://latex.codecogs.com/svg.image?%7C0%5Crangle%20%5Cstackrel%7BH%7D%7B%5Clongrightarrow%7D%20%7C%2B%5Crangle%20=%20%5Cfrac%7B%7C0%5Crangle%20+%20%7C1%5Crangle%7D%7B%5Csqrt%7B2%7D%7D" alt="Hadamard transformation" />
-
-
 For n qubits, that gives 2ⁿ possible outcomes — all ideally equally likely.
 
-Each run produces one random bitstring (like binanry 1010 = 10) --> can be converted into a number.
+Example:
+<img src="https://latex.codecogs.com/svg.image?\bg_white%20%7C0%5Crangle%20%5Cstackrel%7BH%7D%7B%5Clongrightarrow%7D%20%7C%2B%5Crangle%20=%20%5Cfrac%7B%7C0%5Crangle%20+%20%7C1%5Crangle%7D%7B%5Csqrt%7B2%7D%7D" alt="Hadamard transformation" />
 
-### 2. Visualizing Fairness
+Each measurement (e.g., 1010) can be interpreted as a random integer (10 in decimal).
+Running many shots produces a distribution that should look uniform.
+
+(Inspired by IBM’s open-source Qiskit RNG framework:https://github.com/qiskit-community/qiskit_rng) We used the same low-depth superposition circuits for efficiency.
+
+### 2. Visualizing and Testing Fairness
 By running many “shots,” we see how evenly each outcome appears.
-Ideally, all outcomes should have the same frequency — forming a flat histogram.
+Ideally, all outcomes should have the same frequency, forming a flat histogram.
 
-We quantify fairness using a chi-square test and bit frequency plots (0s vs 1s).
+We attempt to test the randomness of our results through:
+* Chi-Square (X²) Test
+compares the measured counts of each outcome with what we would expect in a perfectly uniform distribution.
+<img src="https://latex.codecogs.com/svg.image?\bg_white%20%5Cchi%5E2%20=%20%5Csum%20%5Cfrac%7B(Observed-Expected)%5E2%7D%7BExpected%7D" alt="Chi-square formula" />
+If the X² value is small (close to 0), the distribution is close to uniform.
+This method follows the NIST randomness test suite used. (inspired by step 4 of https://github.com/dorahacksglobal/quantum-randomness-generator/tree/QC-Prediction-Model)
+
+* Bit-Frequency Analysis
+We count how often 0 and 1 appear across all measurements.
+True randomness should give roughly 50% zeros and 50% ones — any large imbalance signals bias.
 
 ### 3. Mitigating Noise 
 
