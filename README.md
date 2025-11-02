@@ -81,7 +81,7 @@ To correct for that, we use readout-error mitigation:
 Simplified from Nath et al. (2025), which builds on Nation et al. (2021) and Ferracin et al. (2024).
 This step, also based on IBM’s M3 (Matrix Measurement Mitigation) library, flattens the histogram and improves fairness.
 
-## 4. Password Mode (Application of QRNG)
+## 4. Password Mode (Practical Application of QRNG)
 We map our quantum-generated bits to printable characters (letters, digits, and symbols) to create secure, random passwords.
 
 Example:
@@ -98,35 +98,58 @@ For example, a 16-character password from 94 symbols ≈ 105 bits of entropy —
 This concept expands on the open project “Quantum Password Generator using Qiskit” (https://github.com/SagarPatange/Quantum-Random-Number-Password-Generator) by adding statistical proof and fairness correction.
 
 
+----
+
 
 # C. Data and Results
 
-### 1. Bit Frequency
+## Generating Quantum Random Numbers
+
+### 1. Bit Frequency using Superposition of Qubits
 <img width="671" height="494" alt="image" src="https://github.com/user-attachments/assets/7070c6eb-58ee-4ffa-b5c2-b5ccc334d43d" />
 
 Balanced ~50/50 distribution --> confirms superposition fairness.
 
+
+
+## Visualising and Testing Fairness
+
 ### 2. 4-Qubit Counts Histogram
 <img width="673" height="497" alt="image" src="https://github.com/user-attachments/assets/ca66532b-db0c-4aea-842d-8f39f73f2821" />
 
-All 16 outcomes (0–15) appear nearly equally, consistent with uniformity.
+All 16 outcomes (0–15) appear nearly equally (no extreme spikes present; generally flat) --> randomness is statistically uniform/ all outcomes almost equally likely.
 
 ### 3. Uniformity Residuals
 <img width="668" height="494" alt="image" src="https://github.com/user-attachments/assets/32790d7d-06fa-4309-8f13-3a02a2b01c89" />
 
-Residuals fluctuate randomly around zero (expected statistical noise only).
+Residuals fluctuate randomly around zero --> deviations are just natural noise; no systematic/ structural bias from QRNG.
 
-### 4. LGI Components (Quantum Certification)
+### 4. Chi-Square Test
+
+**χ² ≈ small, KL ≈ 0.0** → indicates no statistical bias. (Chi-Square Test in Section D of jupyter notebook)
+
+
+
+## Mitigating Noise
+- using readout calibration matrix (described earlier and is in Section E of jupyter notebook)
+
+
+## Verifies that our randomness cannot be explained by any classical process or noise 
+
+### 5. LGI Components (Quantum Certification)
 <img width="667" height="495" alt="image" src="https://github.com/user-attachments/assets/6a2ee60a-58a4-426c-9ddc-4bd7244a4ecc" />
 
 Obtained K₃ ≈ 1.4 > 1 --> clear **violation** of the classical Leggett–Garg bound (Leggett & Garg, 1985), confirming quantum coherence.
 
-### 5. NSIT @ t₂
+### 6. NSIT @ t₂
 <img width="669" height="496" alt="image" src="https://github.com/user-attachments/assets/7fe645fd-3193-41e0-bf6c-7f22062a0b04" />
 
 Δ ≈ 0.53 shows measurement at t₁ influences t₂ --> confirms temporal non-classicality (Nath et al., 2025).
 
-### 6. Password Entropy vs Length
+----
+## Password Mode (Practical Application)
+
+### 7. Password Entropy vs Length
 <img width="668" height="495" alt="image" src="https://github.com/user-attachments/assets/0a308481-3ce9-48cb-9a7e-f2a84db6918c" />
 
 Entropy grows linearly (≈6.55 bits per character for Base94), validating the formula:
@@ -140,7 +163,7 @@ Entropy grows linearly (≈6.55 bits per character for Base94), validating the f
 # D. Analysis and Discussion
 
 ### A. Quantum Randomness Quality
-- **χ² ≈ small, KL ≈ 0.0** → indicates no statistical bias.
+- **χ² ≈ small, KL ≈ 0.0** → indicates no statistical bias. (Using Chi-Square Test in notebook)
 - Bit frequencies show perfect 50/50 split across 10k shots.
 - Uniformity residuals show natural sampling variation only.
 
