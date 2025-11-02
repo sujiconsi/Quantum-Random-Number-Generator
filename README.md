@@ -70,8 +70,7 @@ This step, also based on IBM’s M3 (Matrix Measurement Mitigation) library, fla
 We map our quantum-generated bits to printable characters (letters, digits, and symbols) to create secure, random passwords.
 
 Example:
-
-<img src="https://latex.codecogs.com/svg.image?\bg_white%20Quantum%5C%20bits%20%5CRightarrow%20Base94%5C%20characters%3A%5C%20%22Y8%26f%23P2kN%40v1%22" alt="Quantum bits to Base94 characters" />
+Quantum bits → Base94 characters "Y8&f#P2kN@v1"
 
 Each password’s entropy is estimated as:
 
