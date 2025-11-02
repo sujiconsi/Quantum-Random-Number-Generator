@@ -19,8 +19,8 @@ Our goal:
 χ² = Σ((Observed - Expected)² / Expected)
 
 
-## How It Works
-### 1. Generating Quantum Random Numbers
+# How It Works
+## 1. Generating Quantum Random Numbers
 We build an n-qubit circuit and apply Hadamard (H) gates to each qubit, creating an equal superposition.
 For n qubits, that gives 2ⁿ possible outcomes — all ideally equally likely.
 
@@ -32,28 +32,46 @@ Running many shots produces a distribution that should look uniform.
 
 (Inspired by IBM’s open-source Qiskit RNG framework:https://github.com/qiskit-community/qiskit_rng) We used the same low-depth superposition circuits for efficiency.
 
-### 2. Visualizing and Testing Fairness
+## 2. Visualizing and Testing Fairness
 By running many “shots,” we see how evenly each outcome appears.
 Ideally, all outcomes should have the same frequency, forming a flat histogram.
 
 We attempt to test the randomness of our results through:
-* Chi-Square (X²) Test
-compares the measured counts of each outcome with what we would expect in a perfectly uniform distribution.
+### * Chi-Square (X²) Test
+
+Compares the measured counts of each outcome with what we would expect in a perfectly uniform distribution.
+
 <img src="https://latex.codecogs.com/svg.image?\bg_white%20%5Cchi%5E2%20=%20%5Csum%20%5Cfrac%7B(Observed-Expected)%5E2%7D%7BExpected%7D" alt="Chi-square formula" />
+
 If the X² value is small (close to 0), the distribution is close to uniform.
 This method follows the NIST randomness test suite used. (inspired by step 4 of https://github.com/dorahacksglobal/quantum-randomness-generator/tree/QC-Prediction-Model)
 
-* Bit-Frequency Analysis
+### * Bit-Frequency Analysis
+
 We count how often 0 and 1 appear across all measurements.
 True randomness should give roughly 50% zeros and 50% ones — any large imbalance signals bias.
 
 ### 3. Mitigating Noise 
+Real quantum hardware isn’t perfect and certain qubits might slightly favor 0 or 1. (due to noise)
+To correct for that, we use readout-error mitigation:
 
-Real quantum devices aren’t perfect: some values appear slightly more often.
+1. Calibrate a readout matrix A, where each entry A[i][j] gives the probability of reading result j when i was expected.
+2. Use it to correct the observed probabilities:
+<img src="https://latex.codecogs.com/svg.image?\bg_white%20p_%7Bideal%7D%20=%20A%5E%7B-1%7D%20%5Ctimes%20p_%7Bnoisy%7D" alt="Ideal vs noisy probability vector" />
 
-We calibrate a readout-error matrix and apply a simple correction, this evens out the histogram and demonstrates a “fairer” random generator.
 
-### 4. Password Mode
+Simplified from: https://arxiv.org/html/2502.02973v1#bib (which were originally inspired from Nation et al. [2021] and Ferracin et al. [2024])
 
-Using quantum bits as a source, we randomly sample letters, digits, and symbols to form secure passwords.
-Each password is unpredictable and uniformly distributed — ideal for cryptography or logins.
+This step, also based on IBM’s M3 (Matrix Measurement Mitigation) library, flattens the histogram and improves fairness.
+
+### 4. Password Mode (Application of QRNG)
+We map our quantum-generated bits to printable characters (letters, digits, and symbols) to create secure, random passwords.
+
+Example:
+
+Each password’s entropy is estimated as:
+
+So, a 16-character password from 94 symbols ≈ 105 bits of entropy — strong enough to resist brute-force even on quantum-era machines.
+
+This concept expands on the open project “Quantum Password Generator using Qiskit” (https://github.com/SagarPatange/Quantum-Random-Number-Password-Generator), adding statistical proof and fairness correction.
+
