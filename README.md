@@ -1,5 +1,7 @@
 # Quantum Random Number Generator (implemented for Random Password Generator)
 
+Full name: Wei Chan Leong 
+email ID: lwc.wei.chan@gmail.com
 
 
 Unlike classical random generators (which are ultimately predictable algorithms), our quantum circuit uses the randomness of measurement outcomes to produce numbers that are fundamentally unpredictable.
