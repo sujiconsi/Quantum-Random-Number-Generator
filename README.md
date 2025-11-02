@@ -101,32 +101,32 @@ This concept expands on the open project “Quantum Password Generator using Qis
 
 # C. Data and Results
 
-### 4.1 Bit Frequency
+### 1. Bit Frequency
 <img width="671" height="494" alt="image" src="https://github.com/user-attachments/assets/7070c6eb-58ee-4ffa-b5c2-b5ccc334d43d" />
 
 Balanced ~50/50 distribution --> confirms superposition fairness.
 
-### 4.2 4-Qubit Counts Histogram
+### 2. 4-Qubit Counts Histogram
 <img width="673" height="497" alt="image" src="https://github.com/user-attachments/assets/ca66532b-db0c-4aea-842d-8f39f73f2821" />
 
 All 16 outcomes (0–15) appear nearly equally, consistent with uniformity.
 
-### 4.3 Uniformity Residuals
+### 3. Uniformity Residuals
 <img width="668" height="494" alt="image" src="https://github.com/user-attachments/assets/32790d7d-06fa-4309-8f13-3a02a2b01c89" />
 
 Residuals fluctuate randomly around zero (expected statistical noise only).
 
-### 4.4 LGI Components (Quantum Certification)
+### 4. LGI Components (Quantum Certification)
 <img width="667" height="495" alt="image" src="https://github.com/user-attachments/assets/6a2ee60a-58a4-426c-9ddc-4bd7244a4ecc" />
 
 Obtained K₃ ≈ 1.4 > 1 --> clear **violation** of the classical Leggett–Garg bound (Leggett & Garg, 1985), confirming quantum coherence.
 
-### 4.5 NSIT @ t₂
+### 5. NSIT @ t₂
 <img width="669" height="496" alt="image" src="https://github.com/user-attachments/assets/7fe645fd-3193-41e0-bf6c-7f22062a0b04" />
 
 Δ ≈ 0.53 shows measurement at t₁ influences t₂ --> confirms temporal non-classicality (Nath et al., 2025).
 
-### 4.6 Password Entropy vs Length
+### 6. Password Entropy vs Length
 <img width="668" height="495" alt="image" src="https://github.com/user-attachments/assets/0a308481-3ce9-48cb-9a7e-f2a84db6918c" />
 
 Entropy grows linearly (≈6.55 bits per character for Base94), validating the formula:
