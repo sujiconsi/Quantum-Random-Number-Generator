@@ -25,6 +25,7 @@ We build an n-qubit circuit and apply Hadamard (H) gates to each qubit, creating
 For n qubits, that gives 2ⁿ possible outcomes — all ideally equally likely.
 
 Example:
+
 <img src="https://latex.codecogs.com/svg.image?\bg_white%20%7C0%5Crangle%20%5Cstackrel%7BH%7D%7B%5Clongrightarrow%7D%20%7C%2B%5Crangle%20=%20%5Cfrac%7B%7C0%5Crangle%20+%20%7C1%5Crangle%7D%7B%5Csqrt%7B2%7D%7D" alt="Hadamard transformation" />
 
 Each measurement (e.g., 1010) can be interpreted as a random integer (10 in decimal).
@@ -57,6 +58,7 @@ To correct for that, we use readout-error mitigation:
 
 1. Calibrate a readout matrix A, where each entry A[i][j] gives the probability of reading result j when i was expected.
 2. Use it to correct the observed probabilities:
+
 <img src="https://latex.codecogs.com/svg.image?\bg_white%20p_%7Bideal%7D%20=%20A%5E%7B-1%7D%20%5Ctimes%20p_%7Bnoisy%7D" alt="Ideal vs noisy probability vector" />
 
 
@@ -68,9 +70,11 @@ This step, also based on IBM’s M3 (Matrix Measurement Mitigation) library, fla
 We map our quantum-generated bits to printable characters (letters, digits, and symbols) to create secure, random passwords.
 
 Example:
+
 <img src="https://latex.codecogs.com/svg.image?\bg_white%20Quantum%5C%20bits%20%5CRightarrow%20Base94%5C%20characters%3A%5C%20%22Y8%26f%23P2kN%40v1%22" alt="Quantum bits to Base94 characters" />
 
 Each password’s entropy is estimated as:
+
 <img src="https://latex.codecogs.com/svg.image?\bg_white%20Entropy(bits)%20=%20Length%20%5Ctimes%20%5Clog_2(Alphabet%5C%20Size)" alt="Entropy formula" />
 
 So, a 16-character password from 94 symbols ≈ 105 bits of entropy — strong enough to resist brute-force even on quantum-era machines.
