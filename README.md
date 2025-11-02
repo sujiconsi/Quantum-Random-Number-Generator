@@ -1,4 +1,4 @@
-# Quantum Random Number Generator (using small Hⁿ circuit)
+# Quantum Random Number Generator (implemented for Random Password Generator)
 
 
 
