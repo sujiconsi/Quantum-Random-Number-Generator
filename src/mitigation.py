@@ -1,22 +1,12 @@
 """
-mitigation.py
+mitigation.py: Lightweight readout-error mitigation (toggleable).
 
-
-Lightweight readout-error mitigation (toggleable).
-
-What this module does
-
-- Calibrates *assignment matrices* for each qubit: A_q (2x2), where
-  A_q[i, j] = P(read=j | prepared=i).
-- Builds a global assignment matrix A = A_0 ⊗ A_1 ⊗ ... ⊗ A_{n-1}.
-- Applies the linear correction: p_ideal ≈ A^{-1} p_noisy
+Aim
+- Calibrates *assignment matrices* for each qubit
+- Builds a global assignment matrix A = A_0 ⊗ A_1 ⊗ ... ⊗ A_n-1.
+- Applies the linear correction: p_ideal ≈ A^-1 p_noisy
   (using a stable pseudo-inverse + clipping + renormalization).
 
-This is a pragmatic, "good enough" version inspired by standard measurement
-mitigation approaches (e.g., IBM's M3). It aims to be:
-- Small: single file; no heavy dependencies beyond numpy + qiskit
-- Safe: uses pseudo-inverse and guards against negative entries
-- Optional: wrap it behind a Mitigator(enable=True/False)
 
 Quick start
 
@@ -39,8 +29,7 @@ array([[0.99, 0.01],
 >>> p_corr, p_corr.sum()
 (array([...]), 1.0)
 
-Notes
------
+Notes:
 - For n > ~8, A is 2^n x 2^n; consider per-qubit or local schemes (out of scope).
 - This module focuses on small n (demo & teaching use).
 """
@@ -304,3 +293,11 @@ __all__ = [
     "counts_to_prob_vector",
     "prob_vector_to_counts",
 ]
+"""
+
+Inspired by standard measurement mitigation approaches (e.g., IBM's M3). It aims to be:
+- Small: single file; no heavy dependencies beyond numpy + qiskit
+- Safe: uses pseudo-inverse and guards against negative entries
+- Optional: wrapped it behind a Mitigator(enable=True/False)
+
+"""
