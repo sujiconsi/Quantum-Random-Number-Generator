@@ -1,14 +1,9 @@
 """
-lgi_cert.py
-
-
-Leggett–Garg (LGI) + NSIT (No-Signalling-In-Time) certification helpers
-for a single-qubit “temporal correlations” experiment.
+lgi_cert.py: Leggett–Garg (LGI) + NSIT (No-Signalling-In-Time) certification helpers for a single-qubit “temporal correlations” experiment
 
 Aim:
 1) Builds single-qubit circuits with *mid-circuit measurements* to probe two-time correlators (±1 outcomes).
 2) Computes the K3 Leggett–Garg quantity:
-
 K3 = C12 + C23 - C13 (Macrorealistic (classical) bound: K3 ≤ 1. Quantum can reach up to 1.5.)
 
 3) Computes an NSIT delta at t2. NSIT ≈ 0 means “no signalling in time” ; >0 indicates invasiveness.
