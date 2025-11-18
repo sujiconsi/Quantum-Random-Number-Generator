@@ -1,12 +1,9 @@
 """
 qrng.py
-=======
 
-Core quantum RNG engine.
 
-What this module does
-
-1) Builds the simplest useful quantum circuit for randomness: H on n qubits, then measure.
+Purpose/Aim:
+1) Builds a simple useful quantum circuit for randomness (H on n qubits, then measure)
 2) Turns measurement outcomes into a continuous stream of unbiased bits (via a small cache).
 3) Provides unbiased integers in [0, n) using rejection sampling.
 4) Stays backend-agnostic: runs on Aer by default; can accept a real device backend.
@@ -25,8 +22,10 @@ Quick start
 
 If you're generating a lot of randomness:
 >>> from src.qrng import BitPool
->>> pool = BitPool(n_qubits=16, refill_shots=4096)   # tune as you like
->>> pool.uniform_ints(10, size=1000)                 # 1,000 numbers in [0,10)
+>>> pool = BitPool(n_qubits=16, refill_shots=4096)   
+# tune as you like
+>>> pool.uniform_ints(10, size=1000)                 
+# 1,000 numbers in [0,10)
 """
 
 from __future__ import annotations
