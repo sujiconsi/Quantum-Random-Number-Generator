@@ -1,20 +1,11 @@
 """
-viz.py
+viz.py: Matplotlib helpers for clean figures in QRNG
 
-
-Matplotlib helpers for quick, clean figures in the QRNG-Plus project.
-
-Design goals
-
+Aim:
 - Small, dependency-light (matplotlib only).
 - Return (fig, ax) so callers can further customize or save.
 - Accept plain dicts/arrays from `metrics.py` and Qiskit counts.
 
-IMPORTANT
-
-These helpers do not set global styles or themes. They avoid specifying
-colors so they work “as-is” in most environments. If you want a specific
-look, style it from your notebook/script.
 
 Quick start
 
