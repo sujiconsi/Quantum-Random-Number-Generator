@@ -7,9 +7,9 @@ email ID: lwc.wei.chan@gmail.com
 
 ----
 
-Unlike classical random generators (which are ultimately predictable algorithms), our quantum circuit uses the randomness of measurement outcomes to produce numbers that are fundamentally unpredictable.
+Unlike classical random generators (which are ultimately predictable algorithms), my quantum circuit uses the randomness of measurement outcomes to produce numbers that are more unpredictable.
 
-We built this using Qiskit Runtime v2, and our design shows how quantum randomness can be measured, tested for fairness, and even applied to something useful: secure password generation.
+We built this using Qiskit Runtime v2, and our design shows how quantum randomness is measured, tested for fairness, and applied to secure password generation.
 
 ## A. Purpose/ Goals
 
@@ -48,7 +48,7 @@ Ideally, all outcomes should have the same frequency, forming a flat histogram.
 
 We attempt to test the randomness of our results through:
 
-### * Chi-Square (X²) Test
+### A Chi-Square (X²) Test
 
 Compares the measured counts of each outcome with what we would expect in a perfectly uniform distribution.
 
@@ -58,7 +58,7 @@ If the X² value is small (close to 0), the distribution is close to uniform.
 This method follows the NIST randomness test suite used (NIST, 2010). (also inspired by step 4 of https://github.com/dorahacksglobal/quantum-randomness-generator/tree/QC-Prediction-Model)
 
 
-### * Bit-Frequency Analysis
+### B Bit-Frequency Analysis
 
 We count how often 0 and 1 appear across all measurements.
 True randomness should give roughly 50% zeros and 50% ones — any large imbalance signals bias.
