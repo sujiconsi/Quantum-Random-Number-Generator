@@ -8,11 +8,6 @@ Purpose/Aim:
 3) Provides unbiased integers in [0, n) using rejection sampling.
 4) Stays backend-agnostic: runs on Aer by default; can accept a real device backend.
 
-Why this shape?
-
-- The n-qubit H^n circuit gives a uniform distribution over all bitstrings.
-- A small "bit pool" avoids rebuilding and running circuits for every single bit.
-- Rejection sampling ensures no modulo bias when mapping bits to [0, n).
 
 Quick start
 
@@ -20,7 +15,7 @@ Quick start
 >>> random_bits(64)          # 64 fresh bits (list of 0/1)
 >>> uniform_int(10)          # unbiased integer 0..9
 
-If you're generating a lot of randomness:
+If you re generating a lot of randomness:
 >>> from src.qrng import BitPool
 >>> pool = BitPool(n_qubits=16, refill_shots=4096)   
 # tune as you like
@@ -277,3 +272,11 @@ if __name__ == "__main__":
     xs = pool.uniform_ints(10, size=5000)
     hist = np.bincount(xs, minlength=10)
     print("mod-10 histogram:", hist.tolist())
+
+
+"""
+Why this shape?
+
+- The n-qubit H^n circuit gives a uniform distribution over all bitstrings.
+- A small "bit pool" avoids rebuilding and running circuits for every single bit.
+- Rejection sampling ensures no modulo bias when mapping bits to [0, n)."""
