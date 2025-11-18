@@ -5,35 +5,16 @@ lgi_cert.py
 Leggett–Garg (LGI) + NSIT (No-Signalling-In-Time) certification helpers
 for a single-qubit “temporal correlations” experiment.
 
-What this module does
-
-1) Builds single-qubit circuits with *mid-circuit measurements* to probe
-   two-time correlators C_ij = <Q(t_i) Q(t_j)> for Q = σ_z (±1 outcomes).
+Aim:
+1) Builds single-qubit circuits with *mid-circuit measurements* to probe two-time correlators (±1 outcomes).
 2) Computes the K3 Leggett–Garg quantity:
-      K3 = C12 + C23 - C13
-   Macrorealistic (classical) bound: K3 ≤ 1. Quantum can reach up to 1.5.
-3) Computes an NSIT delta at t2:
-      Δ_NSIT = Σ_b | P_t2(b | measured at t1) − P_t2(b | not measured at t1) |
-   NSIT ≈ 0 means “no signalling in time” (non-invasive); >0 indicates invasiveness.
 
-Design choices (pragmatic for demos)
+K3 = C12 + C23 - C13 (Macrorealistic (classical) bound: K3 ≤ 1. Quantum can reach up to 1.5.)
 
-- Time evolution is modelled as repeated single-qubit rotations U(θ) between
-  measurements. By default we use Ry(2θ) so that θ directly controls the angle
-  between “times.”
-- Measurements are projective in Z; we map bit 0 → +1, bit 1 → −1.
-- We use *mid-circuit* measurements (Qiskit supports this) to implement
-  sequential measurements on the same qubit.
-- This is meant for small-n educational use (one qubit, lots of shots).
+3) Computes an NSIT delta at t2. NSIT ≈ 0 means “no signalling in time” ; >0 indicates invasiveness.
 
-References (high level / inspiration)
-
-- A. J. Leggett and A. Garg, PRL 54, 857 (1985)
-- Kofler & Brukner, PRL 99, 180403 (2007) — macrorealism & LGI context
-- NSIT tests as a practical check for measurement invasiveness
 
 Quick start
-
 >>> from src import qrng
 >>> from src.lgi_cert import run_lgi_k3, run_nsit_t2
 >>> backend = qrng._QASM_BACKEND
@@ -299,3 +280,21 @@ __all__ = [
     "run_lgi_k3",
     "run_nsit_t2",
 ]
+
+"""
+Design choices 
+- Time evolution is modelled as repeated single-qubit rotations U(θ) between
+  measurements. By default we use Ry(2θ) so that θ directly controls the angle
+  between “times.”
+- Measurements are projective in Z; we map bit 0 → +1, bit 1 → −1.
+- We use *mid-circuit* measurements (Qiskit supports this) to implement
+  sequential measurements on the same qubit.
+- This is meant for small-n educational use (one qubit, lots of shots).
+
+
+References (high level / inspiration)
+- A. J. Leggett and A. Garg, PRL 54, 857 (1985)
+- Kofler & Brukner, PRL 99, 180403 (2007) — macrorealism & LGI context
+- NSIT tests as a practical check for measurement invasiveness
+
+"""
