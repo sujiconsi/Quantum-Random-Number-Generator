@@ -4,11 +4,6 @@ Full name: Wei Chan Leong
 
 email ID: lwc.wei.chan@gmail.com
 
-A short note describing your experience running the notebook:
-- Qiskit Version and Package Compatibility (some packages dont work well with Qiskit 2.0 (had to get older version of Qiskit to run))
-
-Let us know if you’d like mentorship or guidance to learn more about Qiskit and quantum computing:
-- I would be keen to receive mentorship on Qiskit, new quantum algorithms and in noise modeling and practical circuit optimization.
 
 ----
 
