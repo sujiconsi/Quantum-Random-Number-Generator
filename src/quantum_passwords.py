@@ -6,11 +6,6 @@ Aim:
 2) Provides a PasswordGenerator that draws unbiased indices from a BitPool.
 3) Exposes simple helpers to make passwords and estimate their entropy.
 
-Note:
-- Unbiased indices come from `qrng.BitPool.uniform_int`, which uses
-  rejection sampling under the hood
-- Entropy =  length * log2(alphabet_size).
-
 Quick start
 >>> from src.quantum_passwords import make_password, estimate_entropy_bits
 >>> make_password(16)                      
@@ -153,3 +148,10 @@ if __name__ == "__main__":
     pwd = gen.password(16)
     print("Password:", pwd)
     print("Entropy (bits) ~", round(gen.entropy_bits(16), 2))
+
+
+
+"""Note:
+- Unbiased indices come from `qrng.BitPool.uniform_int`, which uses
+  rejection sampling under the hood
+- Entropy =  length * log2(alphabet_size)."""
