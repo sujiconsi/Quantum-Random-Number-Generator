@@ -1,21 +1,15 @@
 """
 metrics.py
 
-Core statistical utilities for evaluating QRNG output.
+statistical utilities for evaluating QRNG output
 
-What this module does
-
+Aim:
 - Builds histograms over outcomes (integers or bitstrings).
 - Runs a Chi-square test against the uniform distribution.
 - Computes KL divergence (with safe smoothing).
 - Measures bit-frequency bias (how often 0 vs 1 appear).
 - Small helpers to move between counts and probability vectors.
 
-Design choices
-
-- "Uniform" means: over all outcomes in the sample space you specify.
-- We accept both integer outcomes and bitstrings ("0101") where helpful.
-- KL divergence uses additive epsilon smoothing to avoid log(0).
 
 Quick start
 
@@ -295,3 +289,12 @@ __all__ = [
     "bitstrings_to_int_counts",
     "outcome_histogram",
 ]
+
+"""
+Design choices
+
+- "Uniform" means: over all outcomes in the sample space you specify.
+- We accept both integer outcomes and bitstrings ("0101") where helpful.
+- KL divergence uses additive epsilon smoothing to avoid log(0).
+'
+"""
