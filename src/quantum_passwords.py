@@ -1,24 +1,22 @@
 """
 quantum_passwords.py
 
-
-Turning quantum bits into human-usable passwords.
-
-What this module does
+Aim:
 1) Defines a sensible default alphabet (Base94: printable ASCII).
 2) Provides a PasswordGenerator that draws unbiased indices from a BitPool.
 3) Exposes simple helpers to make passwords and estimate their entropy.
 
-Design notes
+Note:
 - Unbiased indices come from `qrng.BitPool.uniform_int`, which uses
-  rejection sampling under the hood. This is where "fairness" lives.
-- The alphabet is pluggable: you can pass Base62, hex, emoji, your own, etc.
-- Entropy is estimated as length * log2(alphabet_size).
+  rejection sampling under the hood
+- Entropy =  length * log2(alphabet_size).
 
 Quick start
 >>> from src.quantum_passwords import make_password, estimate_entropy_bits
->>> make_password(16)                      # 16 chars from Base94
->>> estimate_entropy_bits(16)              # ~105 bits for Base94
+>>> make_password(16)                      
+# 16 chars from Base94
+>>> estimate_entropy_bits(16)              
+# ~105 bits for Base94
 
 Custom alphabet:
 >>> ALNUM = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
